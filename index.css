@@ -1,0 +1,28 @@
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgb(180, 57, 199);
+    color: rgb(26, 26, 112);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.position {
+    display: flex;
+    align-items: center;
+    background-color:rgb(236, 204, 241);
+    color: rgb(26, 26, 112);
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.text_format {
+    color: white;
+    background-color: rgb(71, 71, 155);
+    border-radius: 20px;
+    padding: 50px;
+    width: fit-content;
+}

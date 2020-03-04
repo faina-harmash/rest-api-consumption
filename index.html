@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+    <style>
+      input,
+      select {
+        display: block;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form class="form">
+        <input type="text" name="name" placeholder="name" />
+        <input type="email" name="email" placeholder="email" />
+        <input type="text" name="company" placeholder="company" />
+        <input name="date" type="date" />
+        <select name="pets" id="pet-select">
+          <option value="">--Please choose an option--</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="hamster">Hamster</option>
+          <option value="parrot">Parrot</option>
+          <option value="spider">Spider</option>
+          <option value="goldfish">Goldfish</option>
+        </select>
+        <button>Submit</button>
+      </form>
+    </main>
+    <!-- <script src="main.js"></script> -->
+    <script src="xhr.js"></script>
+    <!-- <script src="promise.js"></script> -->
+  </body>
+</html>
