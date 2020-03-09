@@ -13,20 +13,20 @@ function xhr(method = "", url, body = null) {
 
 const usersLoad = function(users) {
   users.forEach(element => {
-    let p = document.createElement("p");
-    p.setAttribute("class", "position");
+    let div = document.createElement("div");
+    div.setAttribute("class", "position");
     let ul = document.createElement("ul");
     let ol = document.createElement("ol");
     let blockquote = document.createElement("blockquote");
 
-    p.setAttribute("data-id", element.id);
-    p.innerText = `Name: ${element.name} / Email: ${element.email} / Company: ${element.company.name}`;
+    div.setAttribute("data-id", element.id);
+    div.innerText = `Name: ${element.name} / Email: ${element.email} / Company: ${element.company.name}`;
 
-    p.append(ul);
-    p.append(ol);
-    p.append(blockquote);
+    div.append(ul);
+    div.append(ol);
+    div.append(blockquote);
 
-    document.body.append(p);
+    document.body.append(div);
   });
 };
 
@@ -53,6 +53,11 @@ const postsLoad = function(posts) {
     let olComment = document.createElement("ol");
     olComment.setAttribute("class", "text_format");
     li.append(olComment);
+
+    li.style.cursor = "pointer";
+    li.addEventListener("click", event => {
+      olComment.classList.toggle("visible");
+    });
   });
 };
 

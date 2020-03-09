@@ -27,3 +27,7 @@
     width: fit-content;
     display: none;
 }
+
+.visible {
+    display: block;
+  }
