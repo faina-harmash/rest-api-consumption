@@ -3,23 +3,43 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color:rgb(180, 57, 199);
-    color: rgb(26, 26, 112);
+    background-color:rgb(57, 59, 199);
+    color: rgb(241, 241, 246);
     padding: 10px;
     border-radius: 10px;
 }
 
-.position {
+.profile {
     display: flex;
     align-items: center;
-    background-color:rgb(236, 204, 241);
+    background-color:rgb(240, 221, 243);
     color: rgb(26, 26, 112);
     padding: 10px;
     border-radius: 10px;
 
 }
 
-.text_format {
+.user-info {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 50px;
+    width: fit-content;
+}
+.albums-list {
+    background-color: rgb(200, 197, 243);
+    border-radius: 20px;
+    padding: 50px;
+    width: fit-content;
+}
+
+.post-list {
+    background-color: rgb(201, 151, 248);
+    border-radius: 20px;
+    padding: 50px;
+    width: fit-content;
+}
+
+.comment-list {
     color: white;
     background-color: rgb(71, 71, 155);
     border-radius: 20px;
@@ -28,6 +48,13 @@
     display: none;
 }
 
+.loaded {
+}
+
+.comment-list {
+    display: none;
+}
+
 .visible {
     display: block;
-  }
+}

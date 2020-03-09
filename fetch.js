@@ -9,11 +9,15 @@ function sendRequest(method = "", url, body = null) {
       throw e;
     });
   });
-
 }
 
 const usersLoad = function(users) {
   console.log(users);
+  function reset() {
+    localStorage.clear();
+    console.log (this.users);
+    postsLoad([]);
+  }
   users.forEach(element => {
     let div = document.createElement("div");
     div.setAttribute("class", "position");
@@ -24,9 +28,15 @@ const usersLoad = function(users) {
     div.setAttribute("data-id", element.id);
     div.innerText = `Name: ${element.name} / Email: ${element.email} / Company: ${element.company.name}`;
 
+    let button = document.createElement("button");
+    button.innerText = "Delete posts and comments";
+    button.setAttribute("class", "form");
+    button.style.cursor = "pointer";
+    button.addEventListener("click", () => reset());
+
     div.append(ul);
     div.append(ol);
-    div.append(blockquote);
+    div.append(button);
 
     document.body.append(div);
   });
@@ -44,8 +54,10 @@ const albumsLoad = function(albums) {
 };
 
 const postsLoad = function(posts) {
+  localStorage.setItem("posts", JSON.stringify(posts));
   posts.forEach(post => {
     let user = document.querySelector(`[data-id="${post.userId}"]`);
+
     let ol = user.querySelector("ol");
     let li = document.createElement("li");
 
@@ -64,6 +76,7 @@ const postsLoad = function(posts) {
 };
 
 const commentsLoad = function(comments) {
+  localStorage.setItem("comments", JSON.stringify(comments));
   comments.forEach(comment => {
     let post = document.querySelector(`[post-data-id="${comment.postId}"]`);
 
@@ -81,11 +94,28 @@ sendRequest("GET", "https://jsonplaceholder.typicode.com/users")
   })
   .then(albums => {
     albumsLoad(albums);
-    return sendRequest("GET", "https://jsonplaceholder.typicode.com/posts");
+    let posts = JSON.parse(localStorage.getItem("posts"));
+    if (posts) {
+      return new Promise((resolve, reject) => {
+        resolve(posts);
+      });
+    } else {
+      return sendRequest("GET", "https://jsonplaceholder.typicode.com/posts");
+    }
   })
   .then(posts => {
     postsLoad(posts);
-    return sendRequest("GET", "https://jsonplaceholder.typicode.com/comments");
+    let comments = JSON.parse(localStorage.getItem("comments"));
+    if (comments) {
+      return new Promise((resolve, reject) => {
+        resolve(comments);
+      });
+    } else {
+      return sendRequest(
+        "GET",
+        "https://jsonplaceholder.typicode.com/comments"
+      );
+    }
   })
   .then(comments => {
     commentsLoad(comments);
